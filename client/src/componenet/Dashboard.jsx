@@ -42,6 +42,11 @@ const columns = [
     label: "Query",
     dataKey: "query",
   },
+  {
+    width: 120,
+    label: "Status",
+    dataKey: "Status",
+  },
 ];
 
 const VirtuosoTableComponents = {
@@ -86,6 +91,15 @@ function fixedHeaderContent() {
       ))}
     </TableRow>
   );
+}
+
+
+function ChangeStatus(){
+  return(
+    <div>
+    Status
+    </div>
+  )
 }
 
 export default function Dashboard() {
@@ -153,6 +167,13 @@ const rows = Array.from({ length: 200 }, (_, index) => {
     </Paper>
   );
 }
+
+
+
+
+
+
+
 
 // function Dashboard() {
 
