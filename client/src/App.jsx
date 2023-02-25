@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import EnquiryForm from "./componenet/EnquiryForm";
 import Navbar from "./componenet/Navbar";
 import Dashboard from "./componenet/Dashboard";
+import Login from "./componenet/Login";
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<EnquiryForm />} />
-        <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/Dashboard" element={<Dashboard />}/>
+        <Route path= "/Login" element = {<Login/>}></Route>
+
       </Routes>
     </div>
   );
