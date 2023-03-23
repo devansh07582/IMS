@@ -1,9 +1,23 @@
-.App {
-}
+
 
 .form {
   padding: 60px;
 }
+
+.btn{
+
+ width: 70% !important;
+ font-size: medium !important;
+
+   
+}
+.btn1{
+
+  width: 10% !important;
+
+ }
+
+
 
 .App-logo {
   height: 40vmin;

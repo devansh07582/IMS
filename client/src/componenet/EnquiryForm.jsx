@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import {
   Box,
   Button,
@@ -13,7 +14,16 @@ import {
   MenuItem,
 } from "@mui/material";
 
+
+import { Link } from 'react-router-dom';
+import "../App.css";
+
+
+
 function EnquiryForm() {
+
+
+
   const [name, setName] = useState("");
   const [phonenumber, setphone] = useState(0);
   const [emailaddress, setemail] = useState("");
@@ -79,19 +89,59 @@ function EnquiryForm() {
     }
   };
 
+
+
+
+
   const [phoneError, setphoneError] = useState("");
   const handlePhone = (e) => {
+
+    let a = 0;
+
     const num = e.target.value;
-    if (num.length < 10) {
-      setphoneError("Number is not in valid format");
-    } else {
-      setphoneError("");
-      setphone(num);
+
+    for (let i = 0; i < num.length; i++) {
+      if (num[i] >= 0 && num[i] <= 10) {
+
+        continue
+      }
+
+      else {
+        a = 1;
+      }
     }
+
+    if (a == 0) {
+      if (num.length < 10) {
+
+
+        setphoneError("Number is not in valid format");
+      } else {
+        setphoneError("")
+        setphone(num);
+      }
+    } else {
+      setphoneError("enter only number")
+      setphone(0)
+    }
+
   };
 
-  // value={email}
-  // onChange={(event) => setEmail(event.target.value)
+  const [submitallow, setSubmitallow] = useState(true)
+
+
+  useEffect(() => {
+
+    if ((phonenumber > 1000000000) && (emailaddress !== "") && (name !== "") && (pincode !== "") && (city !== "") && (state !== "") && (highest !== "") && (interest !== "") && (priorcomputerknowledge !== "")) {
+      setSubmitallow(false);
+    } else {
+      setSubmitallow(true);
+    }
+
+  }, [phonenumber, name, emailaddress, city, state, pincode, highest, interest, priorcomputerknowledge, field])
+
+
+
 
   return (
     <div className="form">
@@ -133,6 +183,9 @@ function EnquiryForm() {
               onChange={(e) => {
                 setcity(e.target.value);
               }}
+              InputProps={{
+                readOnly: true,
+              }}
               label="city"
               variant="outlined"
             />
@@ -140,6 +193,9 @@ function EnquiryForm() {
               value={state}
               onChange={(e) => {
                 setstate(e.target.value);
+              }}
+              InputProps={{
+                readOnly: true,
               }}
               label="state"
               variant="outlined"
@@ -232,11 +288,14 @@ function EnquiryForm() {
             )}
           </Box>
 
-          <Button variant="contained" type="submit" onClick={handleSubmit}>
-            submit
-          </Button>
+
+          <Button disabled={submitallow} className="btn" variant="contained" type="submit" onClick={handleSubmit} > submit    </Button>
+
+
         </Stack>
       </Paper>
+
+
     </div>
   );
 }
