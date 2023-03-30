@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
@@ -13,34 +12,24 @@ import CardContent from "@mui/material/CardContent";
 import axios from "axios";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import { Button ,Link } from "@mui/material";
+import { Button, Link } from "@mui/material";
 import { useNavigate } from "react-router-dom";
- 
 
 function StatusDone() {
   const [rows, setRows] = useState([]);
   const [rowdata, setRowdata] = useState([]);
-
-
   useEffect(() => {
     axios.get("http://localhost:8080/api/v1/enquires").then((response) => {
       setRows(response.data.enquiry);
     });
   }, []);
-
-
-const history = useNavigate();
-
-
-
+  const history = useNavigate();
   return (
-
-
     <>
       {rows ? (
 
         <Card sx={{ minWidth: 900, m: 4 }}>
-          <Button  className= "btn1" variant="contained"  onClick={()=>history(-1)} > Back </Button>
+          <Button className="btn1" variant="contained" onClick={() => history(-1)} > Back </Button>
 
           <Box
             componenet="span"
@@ -75,34 +64,25 @@ const history = useNavigate();
                   </TableHead>
                   <TableBody>
                     {
-
                       rows.map((value, index) => {
-                        if(value.status === "done"){
-
-
-                        return (
-                          
-
-                          <TableRow
-
-                            hover
-                            role="checkbox"
-                            tabIndex={-1}
-                            key={index}
+                        if (value.status === "done") {
+                          return (
+                            <TableRow
+                              hover
+                              role="checkbox"
+                              tabIndex={-1}
+                              key={index}
                             // onMouseOverCapture={() => { handleClickOnRow(value._id) }}
-
-                          >
-                            <TableCell align="left">{value.name}</TableCell>
-                            <TableCell align="left">{value.phonenumber}</TableCell>
-                            <TableCell align="left">{value.emailaddress}</TableCell>
-                            <TableCell align="left">{value.address.city}</TableCell>
-                            <TableCell align="left">{value.qualification.highest + " " + value.qualification.interest}</TableCell>
-                            <TableCell align="left">{value.status} 
-                        
-                          </TableCell>
-
-                          </TableRow>
-                        )}
+                            >
+                              <TableCell align="left">{value.name}</TableCell>
+                              <TableCell align="left">{value.phonenumber}</TableCell>
+                              <TableCell align="left">{value.emailaddress}</TableCell>
+                              <TableCell align="left">{value.address.city}</TableCell>
+                              <TableCell align="left">{value.qualification.highest + " " + value.qualification.interest}</TableCell>
+                              <TableCell align="left">{value.status}</TableCell>
+                            </TableRow>
+                          )
+                        }
                       })
                     }
                   </TableBody>
@@ -118,6 +98,4 @@ const history = useNavigate();
     </>
   );
 }
-
-
 export default StatusDone
