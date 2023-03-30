@@ -36,7 +36,6 @@ function EnquiryForm() {
   const [field, setfield] = useState("");
   const [otherSkill, setOtherSkill] = useState("");
 
-  // const [department, setdepartment] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = {
@@ -77,21 +76,23 @@ function EnquiryForm() {
         });
     }
   }
-
+  const [EmailErr, setEmailErr] = useState(false)
   const [emailError, settext] = useState("");
   const emailInfo = (e) => {
     const check = e.target.value;
     if (check.includes("@") === false) {
       settext("Invalid Email");
+      setEmailErr(true)
     } else {
       setemail(check);
       settext("");
+      setEmailErr(false)
     }
   };
 
 
 
-
+  const [phoneErr, setphoneErr] = useState(false)
 
   const [phoneError, setphoneError] = useState("");
   const handlePhone = (e) => {
@@ -108,19 +109,22 @@ function EnquiryForm() {
 
       else {
         a = 1;
+
       }
     }
 
-    if (a == 0) {
+    if (a === 0) {
       if (num.length < 10) {
 
-
+        setphoneErr(true)
         setphoneError("Number is not in valid format");
       } else {
         setphoneError("")
         setphone(num);
+        setphoneErr(false)
       }
     } else {
+      setphoneErr(true)
       setphoneError("enter only number")
       setphone(0)
     }
@@ -150,6 +154,7 @@ function EnquiryForm() {
           <h3>Personal information</h3>
           <Stack spacing={2} direction="row">
             <TextField
+
               onChange={(e) => {
                 setName(e.target.value);
               }}
@@ -157,12 +162,14 @@ function EnquiryForm() {
               variant="outlined"
             />
             <TextField
+              error={phoneErr}
               onBlur={handlePhone}
               helperText={phoneError}
               label="Phone"
               variant="outlined"
             />
             <TextField
+              error={EmailErr}
               onBlur={emailInfo}
               helperText={emailError}
               label="email"

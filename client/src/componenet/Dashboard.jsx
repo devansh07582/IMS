@@ -53,6 +53,7 @@ export default function DataTableTest() {
 
   useEffect(() => {
     axios.get("http://localhost:8080/api/v1/enquires").then((response) => {
+      
       setRows(response.data.enquiry);
     });
   }, []);

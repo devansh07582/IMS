@@ -29,7 +29,7 @@ function StatusRejected() {
     });
   }, []);
 
-const history = useNavigate();
+  const history = useNavigate();
 
 
 
@@ -38,9 +38,9 @@ const history = useNavigate();
 
     <>
       {rows ? (
-        
+
         <Card sx={{ minWidth: 900, m: 4 }}>
-          <Button  className= "btn1" variant="contained"  onClick={()=>history(-1)} > Back </Button>
+          <Button className="btn1" variant="contained" onClick={() => history(-1)} > Back </Button>
 
           <Box
             componenet="span"
@@ -77,32 +77,33 @@ const history = useNavigate();
                     {
 
                       rows.map((value, index) => {
-                        if(value.status === "Rejected"){
+                        if (value.status === "Rejected") {
 
 
-                        return (
-                          
+                          return (
 
-                          <TableRow
 
-                            hover
-                            role="checkbox"
-                            tabIndex={-1}
-                            key={index}
+                            <TableRow
+
+                              hover
+                              role="checkbox"
+                              tabIndex={-1}
+                              key={index}
                             // onMouseOverCapture={() => { handleClickOnRow(value._id) }}
 
-                          >
-                            <TableCell align="left">{value.name}</TableCell>
-                            <TableCell align="left">{value.phonenumber}</TableCell>
-                            <TableCell align="left">{value.emailaddress}</TableCell>
-                            <TableCell align="left">{value.address.city}</TableCell>
-                            <TableCell align="left">{value.qualification.highest + " " + value.qualification.interest}</TableCell>
-                            <TableCell align="left">{value.status} 
-                        
-                          </TableCell>
+                            >
+                              <TableCell align="left">{value.name}</TableCell>
+                              <TableCell align="left">{value.phonenumber}</TableCell>
+                              <TableCell align="left">{value.emailaddress}</TableCell>
+                              <TableCell align="left">{value.address.city}</TableCell>
+                              <TableCell align="left">{value.qualification.highest + " " + value.qualification.interest}</TableCell>
+                              <TableCell align="left">{value.status}
 
-                          </TableRow>
-                        )}
+                              </TableCell>
+
+                            </TableRow>
+                          )
+                        }
                       })
                     }
                   </TableBody>

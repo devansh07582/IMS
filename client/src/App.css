@@ -1,7 +1,12 @@
 
-
+.Username{
+  margin-top: 50% !important;
+  width: 100% !important;
+  padding: 50% !important;
+}
 .form {
   padding: 60px;
+  
 }
 
 .btn{
