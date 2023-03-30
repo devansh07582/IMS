@@ -1,9 +1,28 @@
-.App {
-}
 
+.Username{
+  margin-top: 50% !important;
+  width: 100% !important;
+  padding: 50% !important;
+}
 .form {
   padding: 60px;
+  
 }
+
+.btn{
+
+ width: 70% !important;
+ font-size: medium !important;
+
+   
+}
+.btn1{
+
+  width: 10% !important;
+
+ }
+
+
 
 .App-logo {
   height: 40vmin;
