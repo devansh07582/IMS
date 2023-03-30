@@ -51,8 +51,11 @@ const enquirySchema = new mongoose.Schema({
     dateofenquiry:{
         type:Date,
         default: Date.now 
+    },
+    status: {
+        type:String,
+        default : "pending"
     }
-    // status: 
 
 
 })
