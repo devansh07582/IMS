@@ -8,20 +8,17 @@ import { Link } from 'react-router-dom';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-
-
 function LoginPage() {
 
     const [PasswordIcons,SetPasswordIcons] = useState("password")
 
     function MakeVisible(){
-SetPasswordIcons("text")
+        SetPasswordIcons("text")
     }
+
     function MakeInVisible(){
         SetPasswordIcons("password")
-            }
-
-
+    }
 
     return (
         <div>
@@ -59,30 +56,18 @@ SetPasswordIcons("text")
 
                             </Paper>
 
-                <Paper sx={{width: "100" ,marginTop : "10%" ,marginLeft:"-100%"
-            ,padding:"10%"}}>
+                <Paper sx={{width: "100" ,marginTop : "10%" ,marginLeft:"-100%" ,padding:"10%"}}>
                         Don't have Registered yet ?
 
+                <Link to ="/" style={{textDecoration : "none"}}> Register Here</Link>
 
+                </Paper>
+            </CardContent>
 
-          <Link to ="/" style={{textDecoration : "none"}}> Register Here</Link>
-
-                    </Paper>
-
-                            
-
-
-                            
-
-                    </CardContent>
-
-
-
-                </Box>
+            </Box>
 
             </Card>
         </div>
     )
 }
-
 export default LoginPage

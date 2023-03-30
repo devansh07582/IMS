@@ -14,18 +14,13 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { Button, MenuItem } from "@mui/material";
 import { Link } from "react-router-dom";
-
 import "../App.css";
-
 
 export default function DataTableTest() {
 
   const [rows, setRows] = useState([]);
   const [rowdata, setRowdata] = useState([]);
   const [rowid, setrowid] = useState(0);
-
-
-
 
   let handleStatusChange = ((e) => {
     let updatedStatus = e.target.value
@@ -42,14 +37,10 @@ export default function DataTableTest() {
 
   })
 
-
   let handleClickOnRow = ((id) => {
     setrowid(id)
     // console.log(rowid)
   })
-
-
-
 
   useEffect(() => {
     axios.get("http://localhost:8080/api/v1/enquires").then((response) => {
@@ -103,13 +94,9 @@ export default function DataTableTest() {
                   </TableHead>
                   <TableBody>
                     {
-
                       rows.map((value, index) => {
                         return (
-
-
                           <TableRow
-
                             hover
                             role="checkbox"
                             tabIndex={-1}
@@ -126,7 +113,6 @@ export default function DataTableTest() {
                               <MenuItem value="done">done</MenuItem>
                               <MenuItem value="Rejected">Rejected</MenuItem>
                             </TextField></TableCell>
-
                           </TableRow>
                         )
                       })
@@ -140,7 +126,6 @@ export default function DataTableTest() {
       ) : (
         <h2>Loading...</h2>
       )}
-
     </>
   );
 }

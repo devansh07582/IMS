@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import {
   Box,
   Button,
@@ -13,16 +12,10 @@ import {
   Radio,
   MenuItem,
 } from "@mui/material";
-
-
 import { Link } from 'react-router-dom';
 import "../App.css";
 
-
-
 function EnquiryForm() {
-
-
 
   const [name, setName] = useState("");
   const [phonenumber, setphone] = useState(0);
@@ -59,7 +52,6 @@ function EnquiryForm() {
 
   function handlePinChange(e) {
     const newPincode = e.target.value;
-
     if (newPincode > 100000) {
       fetch(`https://api.postalpincode.in/pincode/${newPincode}`)
         .then((response) => response.json())
@@ -76,8 +68,10 @@ function EnquiryForm() {
         });
     }
   }
+
   const [EmailErr, setEmailErr] = useState(false)
   const [emailError, settext] = useState("");
+
   const emailInfo = (e) => {
     const check = e.target.value;
     if (check.includes("@") === false) {
@@ -90,32 +84,22 @@ function EnquiryForm() {
     }
   };
 
-
-
   const [phoneErr, setphoneErr] = useState(false)
-
   const [phoneError, setphoneError] = useState("");
+
   const handlePhone = (e) => {
-
     let a = 0;
-
     const num = e.target.value;
-
     for (let i = 0; i < num.length; i++) {
       if (num[i] >= 0 && num[i] <= 10) {
-
         continue
-      }
-
-      else {
+      }else {
         a = 1;
-
       }
     }
 
     if (a === 0) {
       if (num.length < 10) {
-
         setphoneErr(true)
         setphoneError("Number is not in valid format");
       } else {
@@ -123,29 +107,22 @@ function EnquiryForm() {
         setphone(num);
         setphoneErr(false)
       }
-    } else {
+    }else{
       setphoneErr(true)
       setphoneError("enter only number")
       setphone(0)
     }
-
   };
 
   const [submitallow, setSubmitallow] = useState(true)
 
-
   useEffect(() => {
-
     if ((phonenumber > 1000000000) && (emailaddress !== "") && (name !== "") && (pincode !== "") && (city !== "") && (state !== "") && (highest !== "") && (interest !== "") && (priorcomputerknowledge !== "")) {
       setSubmitallow(false);
     } else {
       setSubmitallow(true);
     }
-
   }, [phonenumber, name, emailaddress, city, state, pincode, highest, interest, priorcomputerknowledge, field])
-
-
-
 
   return (
     <div className="form">
@@ -154,7 +131,6 @@ function EnquiryForm() {
           <h3>Personal information</h3>
           <Stack spacing={2} direction="row">
             <TextField
-
               onChange={(e) => {
                 setName(e.target.value);
               }}
@@ -295,14 +271,10 @@ function EnquiryForm() {
             )}
           </Box>
 
-
           <Button disabled={submitallow} className="btn" variant="contained" type="submit" onClick={handleSubmit} > submit    </Button>
-
 
         </Stack>
       </Paper>
-
-
     </div>
   );
 }
